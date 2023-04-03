@@ -6,6 +6,10 @@ import Experience from './pages/Experience';
 import Hobbies from './pages/Hobbies';
 import Qualification from './pages/Qualification';
 import Skills from './pages/Skills';
+import Certifications from './pages/Certifications';
+import Workshops from './pages/Workshops';
+import Contactme from './pages/Contactme';
+import Projects from './pages/Projects';
 import './App.css';
 
 
@@ -21,7 +25,11 @@ function App() {
       <Route path = "Hobbies" element ={<Hobbies/>}/> 
       <Route path = "Qualification" element ={<Qualification/>}/>
       <Route path = "Skills" element = {<Skills/>}/>
-      </Routes>
+      <Route path = "Projects" element = {<Projects/>}/>
+      <Route path = "Contactme" element ={<Contactme/>}/>
+      <Route path = "Certifications" element ={<Certifications/>}/>
+      <Route path = "Workshops" element ={<Workshops/>}/>
+    </Routes>
      </BrowserRouter>
       
       </div>
