@@ -5,6 +5,9 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import {useState,useEffect} from 'react';
+import axios from 'axios';
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -42,7 +45,21 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function CustomizedAccordions() {
+export default function Certifiactions() {
+    const [loader,setLoader] = useState(true);
+        const [Certifictions,setCertifictions] = useState(null);
+    
+        const connectToServer = async  () => axios.get('http://localhost:8000/Certifications')
+                                                .then(res=>{
+                                            
+                                                    console.log(res.data);
+                                                    setCertifictions(res.data);
+                                                    setLoader(false)
+                                                }).catch(err=>console.log(err))
+    useEffect(()=>{
+       connectToServer();
+    },[])
+
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -70,6 +87,16 @@ export default function CustomizedAccordions() {
         <AccordionDetails>
           <Typography>
             I am winner of our Campus Coding Test
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+          <Typography>Full Stack</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            I have submitted the Power Bi project dashboard reports
           </Typography>
         </AccordionDetails>
       </Accordion>

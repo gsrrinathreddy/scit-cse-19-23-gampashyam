@@ -1,14 +1,29 @@
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 import { Typography } from '@mui/material';
 
-export default function Aboutmen(){
+export default function Aboutme(){
+const [loader,setLoader] = useState(true);
+    const [aboutme,setAboutme] = useState(null);
+
+    const connectToServer = async  () => axios.get('http://localhost:8000/Aboutme')
+                                            .then(res=>{
+                                        
+                                                console.log(res.data);
+                                                setAboutme(res.data);
+                                                setLoader(false)
+                                            }).catch(err=>console.log(err))
+useEffect(()=>{
+   connectToServer();
+},[])
+    
+
+
     return(
         <>
-<Typography>Name: GAMPA SHYAM</Typography>
-<Typography>Father Name: GAMPA KRISHNAMURTHY</Typography>
-<Typography>Mother Name: GAMPA ANURADHA</Typography>
-<Typography>Email: gampashyam1411@gmail.com</Typography>
-<Typography>Phone No.: 9390201537</Typography>
+        <Typography>Name:Gampa Shyam</Typography>
+        <Typography>Father Name: G.krishnamurthy</Typography>
+        <Typography>Mother Name:Anuradha</Typography>
         </>
-        
     )
-    }
+}
