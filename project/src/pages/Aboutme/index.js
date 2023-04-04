@@ -24,6 +24,7 @@ useEffect(()=>{
         <Typography>Name:Gampa Shyam</Typography>
         <Typography>Father Name: G.krishnamurthy</Typography>
         <Typography>Mother Name:Anuradha</Typography>
+        <Typography>phone Number:9390201537</Typography>
         </>
     )
 }
